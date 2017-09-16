@@ -33,6 +33,7 @@ before_script:
   # Ulimit: See Travis-CI issue report: https://github.com/travis-ci/travis-ci/issues/3328
   - echo 'ulimit -n 4096' > riak
   - sudo mv riak /etc/default/riak
+  - cat /etc/riak/riak.conf
   - mkdir "$PWD/ebin"
   - echo "[{riak_kv, [{add_paths, [\"$PWD/ebin/\"]}]}]." > advanced.config
   - sudo mv advanced.config /etc/riak/advanced.config
