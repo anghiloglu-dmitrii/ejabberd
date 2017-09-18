@@ -37,6 +37,7 @@ before_script:
   - mkdir "$PWD/ebin"
   - echo "[{riak_kv, [{add_paths, [\"$PWD/ebin/\"]}]}]." > advanced.config
   - sudo mv advanced.config /etc/riak/advanced.config
+  - sed -i -- 's/storage_backend = bitcask/storage_backend = leveldb/g' /etc/riak/riak.conf
   - sudo service riak restart
   - sudo riak-admin wait-for-service riak_kv 'riak@127.0.0.1'
   - sudo riak-admin test
